@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+</html>
+<script>
+    // function f(element,priorty) {
+    //     function f1(element,priorty) {//重新创建一个类
+    //         this.element = element;
+    //         this.priority = priorty
+    //     }
+    //     this.items = [];//分装类
+    //     f.prototype.enqueue = function (element,priorty) {
+    //         var queueElement = new f1(element,priorty)
+    //         //判断队列是否为空
+    //         if(this.items.length ==0){
+    //             this.items.push(queueElement)
+    //         }else {
+    //             var add = false
+    //             for (var i = 0; i < this.items.length; i++) {
+    //                 if(queueElement.priority<this.items[i].priority){
+    //                      self.items.slice(i,0,queueElement)
+    //                     add = true;
+    //                      break
+    //                 }
+    //             }
+    //             if(!add){
+    //                 this.items.push(queueElement)
+    //             }
+    //         }
+    //     }
+    // }
+    // var pg = new f()
+//封装列表结构
+function LInkList() {
+    // 内部的类
+    function Node(data) {
+        this.data = data;
+        this.next = null
+
+    }
+    //属性
+    this.head = null
+    this.length = 0
+    //追加方法
+    // LInkList.prototype.append = function (data) {
+    //     var newNode  = new Node(data)
+    //     if(this.length ==0){//第一个节点
+    //         this.head = newNode
+    //     }else {
+    //         var current = this.head;
+    //         while (current.next){
+    //             current = current.next
+    //         }
+    //         current.next = newNode
+    //     }
+    //     this.length +=1
+    // }
+    // toString()方法
+    // LInkList.prototype.toString = function () {
+    //     var current = this.head//定义变量
+    //     // 循环获取节点
+    //     var  liststring = ''
+    //     while (current){
+    //         liststring += current.data + '';
+    //         current = current.next
+    //     }
+    //     return liststring
+    // }
+    // insert方法
+    LInkList.prototype.insert = function (position,data) {
+        // 1.对position进行越界判断
+        if(position<0 || position>this.length)return false;
+        // 2.根据data创建 newnode创建的节点
+        var newNode = new Node(data)
+        //3.判断 插入数据是否是第一个
+        if(position == 0){
+            newNode.next = this.head
+            this.head = newNode
+        }else {
+            var index = 0;
+            var current = this.head;
+            var previous = null
+            while (index++ < position){
+                current = current.next
+            }
+            newNode.next = current;
+            previous.next = newNode
+            this.length+=1;
+            return  true
+        }
+
+
+
+
+
+
+
+
+
+
+
+    }
+}
+
+       
+</script>
